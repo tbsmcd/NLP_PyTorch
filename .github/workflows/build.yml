@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
       - name: Get version number
         id: tag_number
         run: |
@@ -30,7 +28,6 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64,linux/386
           tags: |
             tbsmcd/nlp_pytorch:latest
             tbsmcd/nlp_pytorch:${{steps.tag_number.outputs.dh_tag}}
